@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Supplemental video demonstrations for vision- and machine-learning-enabled human-robot interaction safety in manufacturing.">
+  <title>Human-Robot Interaction Safety | Video Demonstrations</title>
+  <style>
+    :root {
+      --ink: #102231;
+      --muted: #60717d;
+      --navy: #0a2435;
+      --navy-2: #10384f;
+      --teal: #19b7a0;
+      --teal-dark: #0b7569;
+      --sky: #dff5f1;
+      --paper: #f4f7f8;
+      --card: #ffffff;
+      --line: #d9e3e7;
+      --shadow: 0 18px 45px rgba(8, 34, 50, 0.11);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% -5%, rgba(25, 183, 160, 0.16), transparent 24rem),
+        linear-gradient(180deg, #ffffff 0, var(--paper) 32rem, var(--paper) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 82px 0 58px;
+      color: #ffffff;
+      background:
+        linear-gradient(120deg, rgba(10, 36, 53, 0.98), rgba(16, 56, 79, 0.94)),
+        repeating-linear-gradient(90deg, transparent 0 79px, rgba(255, 255, 255, 0.05) 80px);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -130px;
+      bottom: -230px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 66px rgba(255, 255, 255, 0.035),
+        0 0 0 132px rgba(255, 255, 255, 0.025);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: #9ee8db;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 950px;
+      margin-bottom: 22px;
+      font-size: clamp(2.2rem, 5vw, 4.55rem);
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin-bottom: 32px;
+      color: #cbdce4;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+
+    .section-nav {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .section-nav a {
+      padding: 9px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      color: #eef8fa;
+      background: rgba(255, 255, 255, 0.07);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .section-nav a:hover,
+    .section-nav a:focus-visible {
+      border-color: rgba(158, 232, 219, 0.8);
+      background: rgba(25, 183, 160, 0.16);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    main {
+      padding: 62px 0 88px;
+    }
+
+    .demo-section {
+      scroll-margin-top: 28px;
+    }
+
+    .demo-section + .demo-section {
+      margin-top: 78px;
+      padding-top: 70px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(280px, 1.25fr);
+      gap: 38px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      margin-bottom: 8px;
+      color: var(--teal-dark);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(1.65rem, 3vw, 2.45rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .section-summary {
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .video-grid.single {
+      grid-template-columns: minmax(0, 820px);
+    }
+
+    .video-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 8px 26px rgba(8, 34, 50, 0.065);
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .video-card:hover {
+      border-color: #b8d3d8;
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--navy);
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      min-height: 190px;
+      padding: 22px 24px 24px;
+    }
+
+    .figure-number {
+      margin-bottom: 9px;
+      color: var(--teal-dark);
+      font-size: 0.75rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin-bottom: 13px;
+      font-size: 1.18rem;
+      line-height: 1.35;
+      letter-spacing: -0.012em;
+    }
+
+    .watch-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin-top: auto;
+      color: var(--navy-2);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .watch-link:hover,
+    .watch-link:focus-visible {
+      color: var(--teal-dark);
+      outline: none;
+    }
+
+    footer {
+      padding: 26px 0 34px;
+      color: #78909b;
+      background: #eaf0f2;
+      font-size: 0.84rem;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 62px 0 46px;
+      }
+
+      .section-header {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .video-grid,
+      .video-grid.single {
+        grid-template-columns: 1fr;
+      }
+
+      .card-body {
+        min-height: 0;
+      }
+
+      .watch-link {
+        margin-top: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <p class="eyebrow">Supplemental Video Demonstrations</p>
+      <h1>Enhancing Human-Robot Interaction Safety in Manufacturing Using Vision and Machine Learning Technologies</h1>
+      <p class="hero-copy">Eight demonstrations trace the technology from product design and Phase I deployment through risk-adaptive sensing, multi-view fusion, and early investigations of human-humanoid interaction safety.</p>
+      <nav class="section-nav" aria-label="Video demonstration sections">
+        <a href="#phase-one">Product Design and Phase I</a>
+        <a href="#risk-adaptive">Risk-Adaptive Sensing</a>
+        <a href="#humanoid-safety">Humanoid Safety</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="demo-section" id="phase-one" aria-labelledby="phase-one-title">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">Demonstrations 01–05</p>
+          <h2 id="phase-one-title">Product Design and Phase I Outcomes</h2>
+        </div>
+        <p class="section-summary">System concept, industry deployment, and public demonstrations that document the progression and visibility of the Phase I technology.</p>
+      </div>
+
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/RsJMzR4MwrY" title="Figure 1: Product system design and concept demonstration" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <p class="figure-number">Figure 1</p>
+            <h3>Product system design and concept demonstration</h3>
+            <a class="watch-link" href="https://youtu.be/RsJMzR4MwrY" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/Pvqxj-eSJFg" title="Figure 2: TRL-5 deployment at Yaskawa Motoman in a realistic industrial environment" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <p class="figure-number">Figure 2</p>
+            <h3>TRL-5 deployment at Yaskawa Motoman in a realistic industrial environment</h3>
+            <a class="watch-link" href="https://youtu.be/Pvqxj-eSJFg" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/Kp6kna4OVzM" title="Figure 3: Technology demonstration at the 2026 Robot and AI Summit at the UC 1819 Innovation Hub" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <p class="figure-number">Figure 3</p>
+            <h3>Technology demonstration at the 2026 Robot+AI Summit at the UC 1819 Innovation Hub</h3>
+            <a class="watch-link" href="https://youtu.be/Kp6kna4OVzM" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/_tF_ulXVCwI" title="Figure 4: Joint booth with an industry partner at Automate 2026" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <p class="figure-number">Figure 4</p>
+            <h3>Joint booth with an industry partner at Automate 2026</h3>
+            <a class="watch-link" href="https://youtu.be/_tF_ulXVCwI" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/4TURzMgz1Lg" title="Figure 5: Technology demonstration at the Ohio Safety Congress and Expo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <p class="figure-number">Figure 5</p>
+            <h3>Technology demonstration at the Ohio Safety Congress and Expo</h3>
+            <a class="watch-link" href="https://youtu.be/4TURzMgz1Lg" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="demo-section" id="risk-adaptive" aria-labelledby="risk-adaptive-title">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">Demonstration 06</p>
+          <h2 id="risk-adaptive-title">Risk-Adaptive Sensing and Multi-View Fusion</h2>
+        </div>
+        <p class="section-summary">Reliable speed and separation monitoring under substantial visual occlusion through coordinated multi-view sensing and risk-adaptive sensor aggregation.</p>
+      </div>
+
+      <div class="video-grid single">
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/-30qLalpjgE" title="Figure 6: Multi-view sensor aggregation using a risk-adaptive sensing strategy" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <p class="figure-number">Figure 6</p>
+            <h3>Multi-view sensor aggregation using a risk-adaptive sensing strategy</h3>
+            <a class="watch-link" href="https://youtu.be/-30qLalpjgE" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="demo-section" id="humanoid-safety" aria-labelledby="humanoid-safety-title">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">Demonstrations 07–08</p>
+          <h2 id="humanoid-safety-title">Initial Investigation of Human-Humanoid Interaction Safety</h2>
+        </div>
+        <p class="section-summary">Early work on real-time spatial reasoning and photorealistic world models for safety investigation, simulation, and data generation.</p>
+      </div>
+
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/EKxf9TTucWg" title="Figure 7: Real-time scene graph creation summarizing spatial relationships among a humanoid, a human, robotic arms, and environmental objects" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <p class="figure-number">Figure 7</p>
+            <h3>Real-time scene graph creation summarizing spatial relationships among a humanoid, a human, robotic arms, and environmental objects</h3>
+            <a class="watch-link" href="https://youtu.be/EKxf9TTucWg" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/gzkdfNmZ4qc" title="Figure 8: Photorealistic world model for human-humanoid interaction safety investigation and data generation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <p class="figure-number">Figure 8</p>
+            <h3>Photorealistic world model for human-humanoid interaction safety investigation and data generation</h3>
+            <a class="watch-link" href="https://youtu.be/gzkdfNmZ4qc" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">Supplemental video demonstrations for human-robot interaction safety research.</div>
+  </footer>
+</body>
+</html>
